@@ -8,7 +8,6 @@
               type="button"
               class="step-trigger"
               role="tab"
-              :aria-controls="step.id"
               :id="`${step.id}-trigger`"
             >
               <div class="icon-wrapper">
@@ -86,7 +85,7 @@ import ShippingStep from "./steps/ShippingStep.vue";
 import WarehouseStep from "./steps/WarehouseStep.vue";
 import SettingsStep from "./steps/SettingsStep.vue";
 import ReviewStep from "./steps/ReviewStep.vue";
-import StepAction from "./StepAction.vue";
+import StepAction from "../common/ui/StepAction.vue";
 
 const stepperEl = ref(null);
 let stepper = null;
@@ -95,22 +94,22 @@ const steps = [
   {
     id: "shipping-part",
     title: "Shipping Company",
-    icon: new URL("../assets/elements.png", import.meta.url).href,
+    icon: new URL("../../assets/elements.png", import.meta.url).href,
   },
   {
     id: "warehouse-part",
     title: "Warehouses & Products",
-    icon: new URL("../assets/warehouse.png", import.meta.url).href,
+    icon: new URL("../../assets/warehouse.png", import.meta.url).href,
   },
   {
     id: "settings-part",
     title: "Settings",
-    icon: new URL("../assets/settings.png", import.meta.url).href,
+    icon: new URL("../../assets/settings.png", import.meta.url).href,
   },
   {
     id: "review-part",
     title: "Review",
-    icon: new URL("../assets/review.png", import.meta.url).href,
+    icon: new URL("../../assets/review.png", import.meta.url).href,
   },
 ];
 
@@ -124,12 +123,27 @@ onBeforeUnmount(() => {
   stepper = null;
 });
 
+const highlightCompleted = (index) => {
+  // highlight completed step
+  const stepsEl = stepperEl.value.querySelectorAll(".step");
+  if (stepsEl[index]) {
+    stepsEl[index].classList.add("completed");
+  }
+};
+
 const next = () => {
+  const currentIndex = stepper._currentIndex;
+  highlightCompleted(currentIndex);
   stepper?.next();
 };
 
 const previous = () => {
   stepper?.previous();
+  const currentIndex = stepper._currentIndex;
+  const stepsEl = stepperEl.value.querySelectorAll(".step");
+  if (stepsEl[currentIndex]) {
+    stepsEl[currentIndex].classList.remove("completed");
+  }
 };
 
 const submit = () => {
@@ -159,8 +173,15 @@ const submit = () => {
   background-color: #24a259;
 }
 
-:deep(.bs-stepper .step.active) .step-number,
 :deep(.bs-stepper .step.active) .step-title {
+  color: #24a259;
+}
+
+:deep(.bs-stepper .step.completed) .icon-wrapper {
+  background-color: #24a259;
+}
+
+:deep(.bs-stepper .step.completed) .step-title {
   color: #24a259;
 }
 

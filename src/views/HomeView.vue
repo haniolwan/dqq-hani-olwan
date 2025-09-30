@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import StepsBar from "@/components/StepsBar.vue";
+import StepsBar from "@/components/stepper/StepsBar.vue";
 
 export default {
   name: "HomeView",

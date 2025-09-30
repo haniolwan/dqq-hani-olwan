@@ -14,7 +14,7 @@
       @click="$emit('add', product)"
     >
       <span>Add</span>
-      <img src="../../assets/add.png" alt="add-icon" class="add-icon" />
+      <img src="../../../assets/add.png" alt="add-icon" class="add-icon" />
     </button>
 
     <div v-else class="quantity-controls">
@@ -44,6 +44,7 @@ defineEmits(["add", "increase", "decrease", "remove"]);
   align-items: center;
   gap: 1.5rem;
   transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 .product-card:hover {
@@ -61,6 +62,7 @@ defineEmits(["add", "increase", "decrease", "remove"]);
 
 .product-info {
   flex: 1;
+  text-align: start;
 }
 
 .product-title {
@@ -97,6 +99,7 @@ defineEmits(["add", "increase", "decrease", "remove"]);
   transition: all 0.3s ease;
   cursor: pointer;
   gap: 10px;
+  pointer-events: auto;
 }
 
 .add-btn:hover {
@@ -113,6 +116,7 @@ defineEmits(["add", "increase", "decrease", "remove"]);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  pointer-events: auto;
 }
 
 .qty-btn {

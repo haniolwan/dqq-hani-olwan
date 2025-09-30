@@ -44,7 +44,7 @@
           <h2 class="section-title">Select Products</h2>
           <div class="position-relative">
             <img
-              src="../../assets/search.png"
+              src="../../../assets/search.png"
               alt="search-icon"
               class="search-icon"
             />
@@ -83,7 +83,7 @@ import { ref, computed, watch } from "vue";
 const fromWarehouse = ref("roxa");
 const toWarehouse = ref("dqq");
 
-import ProductCard from "@/components/warehouse-components/ProductCard.vue";
+import ProductCard from "@/components/common/ui/ProductCard.vue";
 import debounce from "lodash.debounce";
 import { PRODUCTS } from "@/assets/PRODUCTS";
 
