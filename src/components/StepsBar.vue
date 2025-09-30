@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="stepperEl" class="bs-stepper">
+    <div ref="stepperEl" class="container mt-4 bs-stepper">
       <div class="bs-stepper-header" role="tablist">
         <template v-for="(step, index) in steps" :key="step.id">
           <div class="step" :data-target="`#${step.id}`">

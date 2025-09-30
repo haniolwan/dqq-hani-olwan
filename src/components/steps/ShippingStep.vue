@@ -75,13 +75,18 @@ const selected = ref(null);
   padding: 2rem;
 }
 
+.form-check-input {
+  border-width: 2px;
+}
+
 .form-check-input:checked {
-  background-color: #24a259; /* custom green */
+  background-color: #24a259;
   border-color: #24a259;
+  border-width: 3px;
 }
 
 .form-check-input:focus {
-  border-color: #24a259;
-  box-shadow: 0 0 0 0.25rem rgba(36, 162, 89, 0.25);
+  outline: none;
+  box-shadow: none;
 }
 </style>
